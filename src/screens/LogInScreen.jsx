@@ -63,6 +63,7 @@ export default function LogInScreen(props) {
 
         <Button
           label="Submit"
+          /* eslint-disable-next-line */
           onPress={handlePress}
         />
 

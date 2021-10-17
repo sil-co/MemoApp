@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, Text, StyleSheet, TouchableOpacity, Alert, FlatList
+  View, Text, StyleSheet, TouchableOpacity, Alert, FlatList,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -8,6 +8,7 @@ import {
 } from 'prop-types';
 
 import Icon from './Icon';
+import { dateToString } from '../utils';
 
 export default function MemoList(props) {
   const { memos } = props;
@@ -21,7 +22,7 @@ export default function MemoList(props) {
       >
         <View>
           <Text style={styles.memoListItemTitle} numberOfLines={1}>{item.bodyText}</Text>
-          <Text style={styles.memoListItemDate}>{String(item.updatedAt)}</Text>
+          <Text style={styles.memoListItemDate}>{dateToString(item.updatedAt)}</Text>
         </View>
         <TouchableOpacity
           style={styles.memoDelete}
@@ -37,6 +38,7 @@ export default function MemoList(props) {
     <View style={styles.container}>
       <FlatList
         data={memos}
+        // eslint-disable-next-line
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
